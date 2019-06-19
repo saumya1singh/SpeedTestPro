@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/container"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/parentlayout"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent" android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="39dp" android:layout_height="39dp"
+                                                      android:layout_gravity="center"
+                                                      app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp"
+
+                                                      tools:ignore="VectorDrawableCompat"/>
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="274dp" android:layout_height="50dp"
+                                                     android:textSize="18dp"
+                                                     android:text="NETWORK ANALYZER"
+                                                     android:layout_gravity="center"
+                                                     android:gravity="center"
+                                                     android:textStyle="bold"
+                                                     android:textColor="@color/colorAccent"
+                                                     android:fontFamily="serif-monospace"
+        />
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="41dp" android:layout_height="wrap_content"
+                                                      app:srcCompat="@drawable/ic_settings_black_24dp"
+                                                      android:layout_gravity="center"
+
+                                                      tools:ignore="VectorDrawableCompat"/>
+
+    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Your Network"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="serif-monospace"
+            android:textSize="18dp"
+            android:layout_width="203dp"
+            android:layout_height="47dp"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="94dp">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:textAlignment="viewStart"
+                android:layout_height="62dp"
+                android:text="Your Network Type-"
+                android:fontFamily="serif-monospace"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+
+
+                tools:ignore="RtlCompat"/>
+        <LinearLayout android:layout_width="108dp"
+                      android:id="@+id/wificontainer"
+                      android:orientation="vertical"
+                      android:layout_height="83dp">
+            <androidx.appcompat.widget.AppCompatImageView android:layout_width="40dp"
+                                                          android:layout_height="wrap_content"
+                                                          android:layout_marginTop="20dp"
+                                                          android:id="@+id/wifi"
+                                                          android:layout_gravity="center"
+                                                          app:srcCompat="@drawable/ic_wifi_black_24dp"
+                                                          tools:ignore="VectorDrawableCompat"/>
+            <androidx.appcompat.widget.AppCompatTextView android:layout_width="83dp"
+                                                         android:text="Wifi Connected"
+                                                         android:textColor="#fff"
+                                                         android:layout_gravity="center"
+                                                         android:gravity="center"
+                                                         android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+        <LinearLayout android:layout_width="110dp"
+                      android:orientation="vertical"
+                      android:layout_height="83dp">
+            <androidx.appcompat.widget.AppCompatImageView android:layout_width="38dp"
+                                                          android:layout_height="wrap_content"
+                                                          android:layout_marginTop="20dp"
+                                                          android:id="@+id/mobiledata"
+                                                          android:layout_gravity="center"
+                                                          app:srcCompat="@drawable/ic_import_export_black_24dp"
+                                                          tools:ignore="VectorDrawableCompat"/>
+            <androidx.appcompat.widget.AppCompatTextView android:layout_width="83dp"
+                                                         android:text="Mobiledata Connected"
+                                                         android:textColor="#fff"
+                                                         android:id="@+id/tvdata"
+                                                         android:layout_gravity="center"
+                                                         android:gravity="center"
+                                                         android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="73dp">
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="204dp"
+                android:layout_height="match_parent"
+                android:text="Network Operator-"
+                android:textAlignment="textStart"
+                android:fontFamily="serif-monospace"
+                android:layout_gravity="center"
+                android:gravity="start|center"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+
+
+        />
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="117dp" android:layout_height="34dp"
+                                                     android:layout_marginLeft="0dp"
+                                                     android:id="@+id/tvoperator"
+                                                     android:textColor="#fff"
+                                                     android:gravity="center"
+                                                     android:textSize="16dp"
+                                                     android:outlineProvider="paddedBounds"
+                                                     android:layout_gravity="center"
+                                                     app:srcCompat="@drawable/ic_wifi_black_24dp"
+                                                     tools:ignore="VectorDrawableCompat"/>
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="41dp" android:layout_height="35dp"
+                                                      android:layout_gravity="center"
+                                                      app:srcCompat="@drawable/ic_import_export_black_24dp"
+                                                      tools:ignore="VectorDrawableCompat"/>
+
+
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="50dp"
+                  android:layout_height="73dp">
+    <androidx.appcompat.widget.AppCompatTextView
+
+            android:text="Network Speed-"
+
+            android:layout_marginTop="100dp"
+            android:textColor="@color/colorAccent"
+            android:fontFamily="serif-monospace"
+            android:textSize="18dp"
+
+            android:layout_gravity="start"
+           android:textAlignment="textStart"
+            android:layout_width="198dp"
+            android:layout_height="37dp"/>
+        <androidx.appcompat.widget.AppCompatTextView
+
+                android:layout_marginTop="100dp"
+                android:textColor="@color/colorAccent"
+                android:fontFamily="serif-monospace"
+                android:textSize="18dp"
+                android:id="@+id/tvSpeed"
+                android:layout_gravity="start"
+                android:gravity="center"
+                android:layout_width="198dp"
+                android:layout_height="37dp"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="41dp" android:layout_height="35dp"
+                                                      android:layout_marginLeft="40dp"
+                                                      android:layout_gravity="center"
+                                                      app:srcCompat="@drawable/ic_cloud_upload_black_24dp"
+                                                      tools:ignore="VectorDrawableCompat"/>
+
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="wrap_content"
+                                                     android:layout_height="match_parent"
+                                                     android:layout_gravity="start"
+                                                     android:textAlignment="center"
+                                                     android:textSize="15dp"
+                                                     android:text="67kbpd"
+                                                     android:textColor="#fff"
+                                                     android:gravity="start|center"/>
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="41dp" android:layout_height="35dp"
+                                                      android:layout_gravity="center"
+                                                      app:srcCompat="@drawable/ic_cloud_download_black_24dp"
+                                                      android:layout_marginLeft="80dp"
+                                                      tools:ignore="VectorDrawableCompat"/>
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="61dp" android:layout_height="match_parent"
+                                                     android:id="@+id/downSpeed"
+                                                     android:layout_gravity="start"
+                                                     android:textAlignment="center"
+                                                     android:textSize="15dp"
+                                                     android:textColor="#fff"
+                                                     android:gravity="start|center"/>
+
+    </LinearLayout>
+</LinearLayout>
+
+    <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_height="77dp"
+            app:itemIconTint="@color/colorPrimaryDark"
+            android:background="@color/colorAccent"
+            app:backgroundTint="@color/colorAccent"
+            app:menu="@menu/bottom_nav_menu"
+            app:layout_constraintHorizontal_bias="0.0"/>
+
+</LinearLayout>
