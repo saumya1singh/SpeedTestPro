@@ -1,6 +1,7 @@
 package com.saumya.networkanalyzer
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.Network
@@ -16,8 +17,11 @@ import java.sql.Time
 import java.util.*
 import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
+import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.content.DialogInterface
+import androidx.appcompat.app.AlertDialog
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,11 +36,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_graph -> {
 
-                supportFragmentManager.beginTransaction().replace(R.id.parentlayout, GraphFragment()).commit()
+                startActivity(Intent(baseContext, SpeedActivity::class.java ))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_speed -> {
-
+                startActivity(Intent(Intent(baseContext,SpeedActivity::class.java)))
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -52,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         getSubtype()
         getOperator()
         getDownloadSpeed()
-        getSpeed()
+        getSpeedandName()
     }
 
     private fun getSubtype(): Boolean {
@@ -69,8 +73,8 @@ class MainActivity : AppCompatActivity() {
         if (netType == ConnectivityManager.TYPE_WIFI) {
                wifi.isFocusable=true
             wifi.isFocusableInTouchMode=true
-            wifi.setColorFilter(Color.YELLOW)
-            wifi.solidColor
+            wifi.setColorFilter(Color.RED)
+
             mobiledata.visibility = View.INVISIBLE
             tvdata.visibility=View.INVISIBLE
 
@@ -81,7 +85,7 @@ class MainActivity : AppCompatActivity() {
             mobiledata.isFocusable=true
             mobiledata.isFocusableInTouchMode=true
             wificontainer.visibility=View.GONE
-
+            wifi.visibility=View.GONE
             return info.isConnected()
 
         } else {
@@ -92,9 +96,12 @@ class MainActivity : AppCompatActivity() {
 
    private fun getOperator(){
        //------------Get the Operator Name--------------------
-        val manager = baseContext.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val carrierName = manager.networkOperatorName
-         tvoperator.text= carrierName
+//        val manager = baseContext.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+//        val carrierName = manager.networkOperatorName
+       val wifiManager: WifiManager= baseContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+       val wifiInfo:WifiInfo = wifiManager.connectionInfo
+       val name=wifiInfo.ssid
+         tvoperator.text=name
          tvoperator.isFocusable=true
     }
 
@@ -126,12 +133,26 @@ class MainActivity : AppCompatActivity() {
             e.printStackTrace()
         }
     }
-    private fun getSpeed(){
+    private fun getSpeedandName(){
         //----------------This method gives the Normal Network Speed-----------------
         val wifiManager: WifiManager= baseContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
         val wifiInfo:WifiInfo = wifiManager.connectionInfo
         val speedMbps = wifiInfo.linkSpeed
         tvSpeed.text=speedMbps.toString()
+    }
+
+    override fun onBackPressed() {
+
+        AlertDialog.Builder(this)
+            .setTitle("Really Exit?")
+            .setMessage("Are you sure you want to exit?")
+            .setNegativeButton(android.R.string.no, null)
+            .setPositiveButton(android.R.string.yes, object : DialogInterface.OnClickListener{
+                override fun onClick(dialog: DialogInterface?, which: Int) {
+                    onBackPressed()
+                }
+            })
+        super.onBackPressed()
     }
 
 
