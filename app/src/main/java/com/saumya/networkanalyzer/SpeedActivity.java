@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -23,6 +24,7 @@ public class SpeedActivity extends AppCompatActivity {
     ImageView BackButton;
     Button downLoadSpeed, stop, uploadSpeed;
     TextView textSpeed;
+    private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.2F);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +34,13 @@ public class SpeedActivity extends AppCompatActivity {
 
         //-------------------Manage DownloadButton---------------------------------
         final long downloadTime = TimeUnit.MILLISECONDS.toSeconds(60000);
+        downLoadSpeed.isFocusable();
+        downLoadSpeed.getClipBounds();
         downLoadSpeed.setOnClickListener(
                 new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(buttonClick);
                 awesomeSpeedometer.speedTo(getSpeed(),downloadTime);
             }
         });
@@ -46,6 +51,7 @@ public class SpeedActivity extends AppCompatActivity {
         uploadSpeed.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
+                                               v.startAnimation(buttonClick);
                                                awesomeSpeedometer.speedTo(getSpeed(),uploadTime);
                                            }
                                        });
@@ -55,6 +61,7 @@ public class SpeedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                v.startAnimation(buttonClick);
                 awesomeSpeedometer.stop();
             }
         });
@@ -62,6 +69,7 @@ public class SpeedActivity extends AppCompatActivity {
         BackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.startAnimation(buttonClick);
                 startActivity(new Intent(getBaseContext(), MainActivity.class));
             }
         });
@@ -94,12 +102,12 @@ public class SpeedActivity extends AppCompatActivity {
     }
 
     private Integer getSpeed(){
-        //----------------This method gives the Normal Network Speed only if network is Speed-----------------
+        //----------------This method gives the Normal Network Speed only if network is wifi-----------------
        WifiManager wifiManager =(WifiManager) getBaseContext().getApplicationContext().getSystemService(Context.WIFI_SERVICE) ;
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         int speedMbps = wifiInfo.getLinkSpeed();
         return speedMbps;
     }
-    //------------------------Will handle the network for Mobile data later---------------------------------
+    //------------------------Will write code to handle the network for Mobile data later---------------------------------
     }
 

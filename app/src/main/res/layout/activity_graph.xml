@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".GraphActivity">
+
+    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="fill_parent"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
+    <LinearLayout
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent" android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="39dp" android:layout_height="39dp"
+                                                      android:layout_gravity="center"
+                                                      app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp"
+                                                      android:id="@+id/graphback"
+
+                                                      tools:ignore="VectorDrawableCompat"/>
+        <androidx.appcompat.widget.AppCompatTextView android:layout_width="262dp" android:layout_height="50dp"
+                                                     android:textSize="19dp"
+                                                     android:text="SPEED GRAPH "
+                                                     android:layout_gravity="center"
+                                                     android:gravity="center"
+                                                     android:textStyle="bold"
+                                                     android:textColor="#fff"
+                                                     android:fontFamily="serif-monospace"
+        />
+
+        <androidx.appcompat.widget.AppCompatImageView android:layout_width="41dp" android:layout_height="wrap_content"
+                                                      app:srcCompat="@drawable/ic_settings_black_24dp"
+                                                      android:layout_gravity="center"
+
+                                                      tools:ignore="VectorDrawableCompat"/>
+
+    </LinearLayout>
+
+
+
+        <com.github.anastr.speedviewlib.ProgressiveGauge
+                android:id="@+id/progressiveGauge"
+                android:layout_width="323dp"
+                app:sv_speedometerColor="#FFA346"
+                android:layout_margin="5dp"
+                app:sv_speedTextColor="#fff"
+                app:sv_unitTextColor="#fff"
+                app:sv_speedometerBackColor="@color/colorPrimaryDark"
+                app:sv_textColor="@color/colorAccent"
+                android:layout_gravity="center"
+                android:layout_height="167dp"/>
+        <com.github.anastr.speedviewlib.ImageLinearGauge
+                android:id="@+id/gauge"
+                android:layout_width="335dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                app:sv_orientation="HORIZONTAL"
+                app:sv_speedTextPosition="BOTTOM_CENTER"
+                app:sv_textColor="#fff"
+                app:sv_unitTextColor="#fff"
+                app:sv_speedTextColor="#fff"
+                app:sv_unitUnderSpeedText="true"
+                android:layout_marginTop="10dp"
+                app:sv_speedometerColor="#4842f4"
+                app:sv_speedometerBackColor="@color/colorPrimary"
+                app:sv_image="@drawable/haha"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="100"
+                android:layout_gravity="center_vertical"/>
+
+        <TextView
+                android:id="@+id/textSpeed"
+                android:layout_width="30dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                tools:text="50"/>
+
+
+    </LinearLayout>
+
+
+        <Button
+                android:id="@+id/ok"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="193dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/buttonshape"
+                android:layout_height="46dp"
+                android:text="START SPEED TEST"/>
+        <com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView
+                android:id="@+id/nav_view"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_marginTop="140dp"
+                android:layout_height="53dp"
+                app:itemIconTint="@color/colorPrimaryDark"
+                android:background="@color/colorAccent"
+                app:backgroundTint="@color/colorAccent"
+                app:menu="@menu/bottom_nav_menu"
+                app:layout_constraintHorizontal_bias="0.0"/>
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

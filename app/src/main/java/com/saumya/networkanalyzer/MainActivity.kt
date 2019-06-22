@@ -21,22 +21,22 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.DialogInterface
+import android.view.animation.AlphaAnimation
 import androidx.appcompat.app.AlertDialog
 
 
 class MainActivity : AppCompatActivity() {
 
 
+    private val buttonClick = AlphaAnimation(1f, 0.2f)
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-
-
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_graph -> {
 
-                startActivity(Intent(baseContext, SpeedActivity::class.java ))
+                startActivity(Intent(baseContext, GraphActivity::class.java ))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_speed -> {
@@ -57,6 +57,21 @@ class MainActivity : AppCompatActivity() {
         getOperator()
         getDownloadSpeed()
         getSpeedandName()
+        mainback.setOnClickListener {
+            it.startAnimation(buttonClick)
+            AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, object : DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+
+                        onBackPressed()
+                    }
+                })
+                .create()
+                .show()
+        }
     }
 
     private fun getSubtype(): Boolean {
@@ -73,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         if (netType == ConnectivityManager.TYPE_WIFI) {
                wifi.isFocusable=true
             wifi.isFocusableInTouchMode=true
-            wifi.setColorFilter(Color.RED)
+            wifi.setColorFilter(Color.WHITE)
 
             mobiledata.visibility = View.INVISIBLE
             tvdata.visibility=View.INVISIBLE
@@ -142,16 +157,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
-        AlertDialog.Builder(this)
-            .setTitle("Really Exit?")
-            .setMessage("Are you sure you want to exit?")
-            .setNegativeButton(android.R.string.no, null)
-            .setPositiveButton(android.R.string.yes, object : DialogInterface.OnClickListener{
-                override fun onClick(dialog: DialogInterface?, which: Int) {
-                    onBackPressed()
-                }
-            })
+        finish()
         super.onBackPressed()
     }
 

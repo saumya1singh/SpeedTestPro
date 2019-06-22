@@ -20,10 +20,12 @@
 
                                                       tools:ignore="VectorDrawableCompat"/>
         <androidx.appcompat.widget.AppCompatTextView android:layout_width="274dp" android:layout_height="50dp"
-                                                     android:textSize="19dp"
-                                                     android:text="SPEEDTEST "
+                                                     android:textSize="20dp"
+                                                     android:text="SPEEDTEST PRO"
+
                                                      android:layout_gravity="center"
                                                      android:gravity="center"
+
                                                      android:textStyle="bold"
                                                      android:textColor="#fff"
                                                      android:fontFamily="serif-monospace"
@@ -45,7 +47,7 @@
             app:sv_indicatorWidth="35dp"
             app:sv_speedometerColor="@color/colorAccent"
             app:sv_trianglesColor="@color/colorPrimary"
-            app:sv_indicatorColor="@color/colorAccent"
+            app:sv_indicatorColor="#fff"
             app:sv_textColor="#84ff84"
             app:sv_speedTextSize="20dp"
             app:sv_unitTextSize="18dp"
@@ -143,7 +145,8 @@
             android:id="@+id/nav_view"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="65dp"
+           android:foregroundGravity="bottom"
             android:layout_height="40dp"
             app:itemIconTint="@color/colorPrimaryDark"
             android:background="@color/colorAccent"
